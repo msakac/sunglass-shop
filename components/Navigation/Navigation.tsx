@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import ListItem from '../ListItem/ListItem';
-import UserAvatarDropdown from '../UserAvatarDropdown/UserAvatarDropDownItem/UserAvatarDropdown';
+import UserAvatarDropdown from '../UserAvatarDropdown/UserAvatarDropdown';
 export default function Navigation() {
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [profileIsOpen, setProfileIsOpen] = useState(false);
 
   const navClickHandler = () => {
-    profileIsOpen && setProfileIsOpen(false)
+    profileIsOpen && setProfileIsOpen(false);
     setNavIsOpen((value) => !value);
   };
   const profileClickHandler = () => {
@@ -56,12 +56,12 @@ export default function Navigation() {
     },
     {
       key: '4n',
-      title: 'Pricing',
-      link: '/'
+      title: 'Glasses',
+      link: '/admin'
     },
     {
       key: '5n',
-      title: 'Contact',
+      title: 'Login',
       link: '/'
     }
   ];
@@ -69,10 +69,9 @@ export default function Navigation() {
   return (
     <nav className={style.nav}>
       <div className={style.wrapper}>
-
         <a href="https://flowbite.com/" className="flex items-center">
           <Image src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" width={24} height={24} />
-          <span className={style.logo}>Flowbite</span>
+          <span className={style.logo}>Štacun</span>
         </a>
         <div className="flex items-center md:order-2">
           <UserAvatarDropdown onClick={profileClickHandler} isOpen={profileIsOpen} profileDropdownItems={profileDropdownItems} />
@@ -92,7 +91,7 @@ export default function Navigation() {
         <div className={style.list__container(navIsOpen)}>
           <ul className={style.ul}>
             {navigationDropdownItems.map((item) => (
-              <ListItem key={item.key} title={item.title} className={style.listItem_unactive} />
+              <ListItem key={item.key} title={item.title} className={style.listItem_unactive} link={item.link} />
             ))}
           </ul>
         </div>
@@ -101,11 +100,10 @@ export default function Navigation() {
   );
 }
 
-
 const style = {
-  nav: 'bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900',
+  nav: 'bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900',
   wrapper: 'container flex flex-wrap justify-between items-center mx-auto',
-  logo: 'self-center text-xl font-semibold whitespace-nowrap dark:text-white',
+  logo: 'self-center text-xl ml-3 font-semibold whitespace-nowrap dark:text-white',
   button: `inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg 
   md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 
   dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`,

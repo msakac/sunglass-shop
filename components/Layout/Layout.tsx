@@ -12,7 +12,7 @@ export default function Layout({children} : ILayoutProps) {
       <header>
         <Navigation />
       </header>
-      <main>
+      <main className="mx-auto max-w-[1536px]">
         {children}
       </main>
     </Fragment>

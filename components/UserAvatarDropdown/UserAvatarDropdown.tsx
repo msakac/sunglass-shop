@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Image from 'next/image';
-import ListItem from '../../ListItem/ListItem';
+import ListItem from '../ListItem/ListItem';
 
 interface IUserAvatarDropdownProps {
   onClick: () => void;
@@ -24,7 +24,7 @@ export default function UserAvatarDropdown({ onClick, isOpen, profileDropdownIte
         data-dropdown-toggle="user-dropdown"
         data-dropdown-placement="bottom">
         <span className="sr-only">Open user menu</span>
-        <Image width={32} height={32} className="rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo" />
+        <Image width={32} height={32} className="rounded-full" src="/avatar.jpg" alt="user photo" />
       </button>
       <div
         className={style.dropdown__container(isOpen)}
@@ -33,12 +33,12 @@ export default function UserAvatarDropdown({ onClick, isOpen, profileDropdownIte
         data-popper-escaped=""
         data-popper-placement="bottom">
         <div className="py-3 px-4">
-          <span className={style.name}>Bonnie Green</span>
-          <span className={style.email}>name@flowbite.com</span>
+          <span className={style.name}>Hardo Kodiran</span>
+          <span className={style.email}>hardkod@gmail.com</span>
         </div>
         <ul className="py-1" aria-labelledby="user-menu-button">
           {profileDropdownItems.map((item) => (
-            <ListItem key={item.key} title={item.title} className={style.listItem}/>
+            <ListItem key={item.key} title={item.title} className={style.listItem} link={item.link} />
           ))}
         </ul>
       </div>
