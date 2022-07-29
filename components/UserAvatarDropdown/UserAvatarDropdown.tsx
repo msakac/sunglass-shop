@@ -24,7 +24,7 @@ export default function UserAvatarDropdown({ onClick, isOpen, profileDropdownIte
         data-dropdown-toggle="user-dropdown"
         data-dropdown-placement="bottom">
         <span className="sr-only">Open user menu</span>
-        <Image width={32} height={32} className="rounded-full" src="/avatar.jpg" alt="user photo" />
+        <Image width={48} height={48} className="rounded-full" src="/avatar.jpg" alt="user photo" />
       </button>
       <div
         className={style.dropdown__container(isOpen)}

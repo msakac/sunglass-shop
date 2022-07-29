@@ -1,142 +1,21 @@
 import React from 'react';
+import Input from '../../UI/Input';
 
 export default function GlassesForm() {
   return (
-      <form>
-        <div className="grid gap-6 mb-6 lg:grid-cols-2">
-          <div>
-            <label htmlFor="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              First name
-            </label>
-            <input
-              type="text"
-              id="first_name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="John"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Last name
-            </label>
-            <input
-              type="text"
-              id="last_name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Doe"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="company" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Company
-            </label>
-            <input
-              type="text"
-              id="company"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Flowbite"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="phone" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Phone number
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="123-45-678"
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="website" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Website URL
-            </label>
-            <input
-              type="url"
-              id="website"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="flowbite.com"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="visitors" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-              Unique visitors (per month)
-            </label>
-            <input
-              type="number"
-              id="visitors"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder=""
-              required
-            />
-          </div>
-        </div>
-        <div className="mb-6">
-          <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Email address
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="john.doe@company.com"
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="•••••••••"
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label htmlFor="confirm_password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Confirm password
-          </label>
-          <input
-            type="password"
-            id="confirm_password"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="•••••••••"
-            required
-          />
-        </div>
-        <div className="flex items-start mb-6">
-          <div className="flex items-center h-5">
-            <input
-              id="remember"
-              type="checkbox"
-              value=""
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-              required
-            />
-          </div>
-          <label htmlFor="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-400">
-            I agree with the{' '}
-            <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">
-              terms and conditions
-            </a>
-            .
-          </label>
-        </div>
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Submit
-        </button>
-      </form>
+    <form>
+      <div className="grid gap-6 mb-6 lg:grid-cols-2">
+        <Input id={'glasses_name'} title={'Glasses name'} required placeholder="Some Glasses" />
+        <Input id={'type'} title={'Type'} placeholder="Some Type" required />
+        <Input id={'qty'} title={'Quantity'} type="number" min="1" max="100" required placeholder="xxx" />
+        <Input id={'price'} title={'Price'} type="number" min="1" step="any" required placeholder="$" />
+      </div>
+      <Input id={'description'} title={'Description'} type="textarea" required />
+      <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+        <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+          Purple to blue
+        </span>
+      </button>
+    </form>
   );
 }
