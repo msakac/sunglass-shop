@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-interface ITitleProps{
-    title: string
+interface ITitleProps {
+  title: string;
+  style?: string;
 }
 
-export default function Title({title} : ITitleProps) {
-  return <h2 className="text-4xl dark:text-white my-[3vw]">{title}</h2>;
+export default function Title({ title, style }: ITitleProps) {
+  return <h1 className={`text-4xl dark:text-white my-[3vw] ${style}`}>{title}</h1>;
 }

@@ -2,7 +2,11 @@ import React from 'react';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 
-export default function GlassesForm() {
+interface IGlassesFormProps{
+  onCancel: () => void
+}
+
+export default function GlassesForm({onCancel} : IGlassesFormProps) {
   return (
     <form>
       <div className="grid gap-6 mb-6 lg:grid-cols-2">
@@ -12,7 +16,7 @@ export default function GlassesForm() {
         <Input id={'price'} title={'Price'} type="number" min="1" step="any" required placeholder="$" />
       </div>
       <Input id={'description'} title={'Description'} type="textarea" required />
-      <Button title={'Cancel'} style={'mr-[20px]'}/>
+      <Button title={'Cancel'} onClick={onCancel} style={'mr-[20px]'}/>
       <Button title={'Add Glasses'} withBorder={false} />
     </form>
   );
