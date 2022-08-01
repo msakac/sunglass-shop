@@ -8,3 +8,9 @@ export type GlassesType = {
   id?: string;
   _id?:any;
 };
+
+export type TableButton = {
+  title: string;
+  onClick: (id: string) => void;
+  style: string;
+};
