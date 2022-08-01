@@ -1,10 +1,10 @@
 import React from 'react';
 import TableRow from './TableRow';
-import {GlassesType} from '../../common/types'
+import {GlassesType, TableButton} from '../../common/types'
 interface ITableProps {
   style?: string;
   columns: string[];
-  buttons?: string[];
+  buttons?: TableButton[];
   data?: GlassesType[];
 }
 
@@ -25,8 +25,8 @@ export default function Table({ style, columns, buttons, data }: ITableProps) {
             {/* Iteriranje kroz sve gumbe */}
             {buttons?.map((button) => {
               return (
-                <th key={button} scope="col" className="py-3 px-6">
-                  <span className="sr-only">{button}</span>
+                <th key={button.title} scope="col" className="py-3 px-6">
+                  <span className="sr-only">{button.title}</span>
                 </th>
               );
             })}
