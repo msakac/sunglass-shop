@@ -6,5 +6,5 @@ interface ITitleProps {
 }
 
 export default function Title({ title, style }: ITitleProps) {
-  return <h1 className={`text-4xl dark:text-white my-[3vw] ${style}`}>{title}</h1>;
+  return <h1 className={` dark:text-white ${style}`}>{title}</h1>;
 }

@@ -21,7 +21,7 @@ export default function index() {
         <meta {...HomepageHead.meta} />
       </Head>
       <Layout>
-        <Title title="Admin Page" />
+        <Title title="Admin Page" style="my-[3vw] text-4xl" />
         <Card>
           <Title title="Create Glasess" style="text-xl my-0" />
           {!isCreateForm && <Button title={'Open Create Form'} onClick={openCreateFormHandler} />}
