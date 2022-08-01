@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import React, { Fragment, useState } from 'react';
+import { GlassesType } from '../../common/types';
 import GlassesForm from '../../components/Glasses/GlassesForm/GlassesForm';
 import Layout from '../../components/Layout/Layout';
 import Table from '../../components/Table/Table';
@@ -8,11 +9,14 @@ import Card from '../../components/UI/Card';
 import Title from '../../components/UI/Title';
 import { HomepageHead } from '../../helpers/head-data';
 
-export default function index() {
-  const [isCreateForm, setIsCreateForm] = useState(false);
+interface IAdminPageProps {
+  glasses: GlassesType[];
+}
 
-  const tableColumns = [ 'Created','Title', 'Type', 'Quantity', 'Price', 'Description',]
-  const tableButtons = ['Edit', 'Delete']
+export default function index({ glasses }: IAdminPageProps) {
+  const [isCreateForm, setIsCreateForm] = useState(false);
+  const tableColumns = ['Image','ID', 'Created', 'Title', 'Type', 'Price', 'Quantity', 'Description'];
+  const tableButtons = ['Edit', 'Delete'];
 
   const openCreateFormHandler = () => {
     setIsCreateForm((value) => !value);
@@ -33,9 +37,29 @@ export default function index() {
         </Card>
         <Card style="w-auto my-5 max-w-fit">
           <Title title="All Glasses" style="text-xl my-3" />
-          <Table columns={tableColumns} buttons={tableButtons} />
+          <Table columns={tableColumns} buttons={tableButtons} data={glasses} />
         </Card>
       </Layout>
     </Fragment>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:3000/api/glasses');
+  const glasses = await res.json();
+
+  return {
+    props: {
+      glasses: glasses.map((glass: GlassesType) => ({
+        id: glass._id.toString(),
+        createdAt: glass.createdAt,
+        title: glass.title,
+        type: glass.type,
+        price: glass.price,
+        quantity: glass.quantity,
+        description: glass.description
+      }))
+    },
+    revalidate: 1
+  };
 }

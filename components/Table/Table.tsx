@@ -1,28 +1,12 @@
 import React from 'react';
 import TableRow from './TableRow';
-
-type GlassesType = {
-  title: string;
-  type: string;
-  quantity: string;
-  price: string;
-  description: string;
-  createdAt: number;
-};
-
+import {GlassesType} from '../../common/types'
 interface ITableProps {
   style?: string;
   columns: string[];
   buttons?: string[];
   data?: GlassesType[];
 }
-
-const DUMMY_DATA = [
-  { title: 'dd', type: 'dd', quantity: '1', price: '1', description: 'dd', createdAt: '01. 08. 2022. 12:33:47' },
-  { title: 'dd', type: 'dd', quantity: '1', price: '1', description: 'dd', createdAt: '01. 08. 2022. 12:33:47' },
-  { title: 'dd', type: 'dd', quantity: '1', price: '1', description: 'dd', createdAt: '01. 08. 2022. 12:33:47' },
-  { title: 'dd', type: 'dd', quantity: '1', price: '1', description: 'dd', createdAt: '01. 08. 2022. 12:33:47' }
-];
 
 export default function Table({ style, columns, buttons, data }: ITableProps) {
   return (
@@ -50,7 +34,7 @@ export default function Table({ style, columns, buttons, data }: ITableProps) {
         </thead>
         <tbody>
           {/* Iteriranje kroz sve podatke */}
-          {DUMMY_DATA?.map((single) => {
+          {data?.map((single) => {
             return <TableRow key={single.createdAt} data={single} buttons={buttons} />;
           })}
         </tbody>

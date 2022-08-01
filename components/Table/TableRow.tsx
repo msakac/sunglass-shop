@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface ITableRowProps {
@@ -10,13 +11,13 @@ export default function TableRow({ data, buttons }: ITableRowProps) {
   function showTableData(i: number, keyName: string) {
     if (i === 0) {
       return (
-        <th scope="row" className={styles.tableHead}>
+        <th scope="row" key={data[keyName] + data.id} className={styles.tableHead}>
           {data[keyName]}
         </th>
       );
     } else {
       return (
-        <td key={data[keyName]} className="py-4 px-6">
+        <td key={data[keyName] + data.id} className="py-4 px-6">
           {data[keyName]}
         </td>
       );
@@ -25,6 +26,9 @@ export default function TableRow({ data, buttons }: ITableRowProps) {
 
   return (
     <tr className={styles.tableRow}>
+      <td className='pl-4'>
+        <Image width={48} height={48} className="rounded-full" src="/avatar.jpg" alt="user photo" />
+      </td>
       {Object.keys(data).map((keyName, i) => showTableData(i, keyName))}
       {buttons?.map((button) => {
         return (
@@ -44,19 +48,3 @@ const styles = {
   tableHead: 'py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white',
   tableButton: 'font-medium text-blue-600 dark:text-blue-500 hover:underline'
 };
-
-<th scope="row" className={styles.tableHead}>
-  Apple MacBook Pro 17"
-</th>;
-//   <td className="py-4 px-6">Sliver</td>
-//   <td className="py-4 px-6">Laptop</td>
-//   <td className="py-4 px-6">$2999</td>
-
-// if (isTitle) {
-//   setIsTitle(false);
-//   return (
-//     <th scope="row" className={styles.tableHead}>
-//       {data[keyName]}
-//     </th>
-//   );
-// } else {}

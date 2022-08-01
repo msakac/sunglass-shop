@@ -7,7 +7,7 @@ interface IGlassesFormProps {
   onCancel: () => void;
 }
 
-export default function GlassesForm({ onCancel }: IGlassesFormProps) {
+export default function GlassesForm({ onCancel}: IGlassesFormProps) {
   const [title, setTitle] = useState('');
   const [type, setType] = useState('');
   const [quantity, setQuantity] = useState('');
