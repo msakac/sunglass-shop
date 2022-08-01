@@ -13,10 +13,10 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
   const [quantity, setQuantity] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(title + ' ' + type + ' ' + quantity + ' ' + price + ' ' + description);
 
     let glasses = {
       title,
@@ -24,7 +24,7 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
       quantity,
       price,
       description,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().getTime()
     }
 
     const response = await fetch('/api/glasses', {
@@ -33,7 +33,8 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
       body: JSON.stringify(glasses)
     });
     const data = await response.json();
-    console.log(data.message);
+    //console.log(data.message);
+    onCancel();
   };
 
   return (
@@ -45,6 +46,7 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
           required
           placeholder="Some Glasses"
           onChange={(e: React.FormEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)}
+          value={title}
         />
         <Input
           id={'type'}
@@ -52,6 +54,7 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
           placeholder="Some Type"
           required
           onChange={(e: React.FormEvent<HTMLInputElement>) => setType(e.currentTarget.value)}
+          value={type}
         />
         <Input
           id={'qty'}
@@ -62,6 +65,7 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
           required
           placeholder="xxx"
           onChange={(e: React.FormEvent<HTMLInputElement>) => setQuantity(e.currentTarget.value)}
+          value={quantity}
         />
         <Input
           id={'price'}
@@ -72,6 +76,7 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
           required
           placeholder="99.99$"
           onChange={(e: React.FormEvent<HTMLInputElement>) => setPrice(e.currentTarget.value)}
+          value={price}
         />
       </div>
       <TextArea
@@ -82,8 +87,18 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
         rows="5"
         placeholder="Description.."
         onChange={(e: React.FormEvent<HTMLInputElement>) => setDescription(e.currentTarget.value)}
+        value={description}
       />
-      <Input id={'image'} title={'Image'} type="text" min="1" required placeholder="http://image.com" />
+      <Input
+        id={'image'}
+        title={'Image'}
+        type="text"
+        min="1"
+        required
+        placeholder="http://image.com"
+        onChange={(e: React.FormEvent<HTMLInputElement>) => setImage(e.currentTarget.value)}
+        value={image}
+      />
       <Button title={'Cancel'} onClick={onCancel} style={'mr-[20px]'} />
       <Button title={'Add Glasses'} withBorder={false} />
     </form>
