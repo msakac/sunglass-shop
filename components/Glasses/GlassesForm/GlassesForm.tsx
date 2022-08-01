@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 import Button from '../../UI/Button';
 import Input from '../../UI/Input';
 import TextArea from '../../UI/TextArea';
+import { useRouter } from 'next/router';
 
 interface IGlassesFormProps {
   onCancel: () => void;
 }
 
-export default function GlassesForm({ onCancel}: IGlassesFormProps) {
+export default function GlassesForm({ onCancel }: IGlassesFormProps) {
   const [title, setTitle] = useState('');
   const [type, setType] = useState('');
   const [quantity, setQuantity] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ export default function GlassesForm({ onCancel}: IGlassesFormProps) {
       price,
       description,
       createdAt: new Date().getTime()
-    }
+    };
 
     const response = await fetch('/api/glasses', {
       method: 'POST',
@@ -35,6 +38,7 @@ export default function GlassesForm({ onCancel}: IGlassesFormProps) {
     const data = await response.json();
     //console.log(data.message);
     onCancel();
+    router.replace('/admin');
   };
 
   return (

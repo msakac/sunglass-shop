@@ -8,24 +8,41 @@ import Button from '../../components/UI/Button';
 import Card from '../../components/UI/Card';
 import Title from '../../components/UI/Title';
 import { HomepageHead } from '../../helpers/head-data';
+import { useRouter } from 'next/router';
 
 interface IAdminPageProps {
   glasses: GlassesType[];
 }
 
 export default function index({ glasses }: IAdminPageProps) {
+  const router = useRouter();
   //State that manages form for adding new glasses
   const [isCreateForm, setIsCreateForm] = useState(false);
+
   //Columns for table
   const tableColumns = ['Image', 'ID', 'Created', 'Title', 'Type', 'Price', 'Quantity', 'Description'];
+
   //Callback handlers for button onClick actions in table
-  const editClickHandler = (id: string) => {console.log('Edit:' +id)};
-  const deleteClickHandler = (id: string) => {console.log('Delete:' + id);};
+  const editClickHandler = (id: string) => {
+    console.log('Edit:' + id);
+  };
+
+  const deleteClickHandler = async (id: string) => {
+    console.log('Delete:' + id);
+    const response = await fetch('api/glasses/' + id, {
+      method: 'DELETE'
+    });
+    const data = await response.json();
+    console.log(data.message);
+    router.replace('/admin');
+  };
+
   //Buttons that will be in table. Every button has title, onClick event and style
   const tableButtons = [
     { title: 'Edit', onClick: editClickHandler, style: styles.btnUpdate },
     { title: 'Delete', onClick: deleteClickHandler, style: styles.btnDelete }
   ];
+
   //Handler for form state
   const openCreateFormHandler = () => {
     setIsCreateForm((value) => !value);
