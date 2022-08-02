@@ -23,7 +23,7 @@ async function getAllGlasses(req: NextApiRequest, res: NextApiResponse) {
     const db = client.db(process.env.DB_NAME);
     const glassesCollection = db.collection('glasses');
     const glasses = await glassesCollection.find().toArray();
-    res.status(200).json(glasses)
+    res.status(200).json(glasses);
   } catch (error) {
     if (error instanceof Error) {
       res.status(400).json({
@@ -32,9 +32,9 @@ async function getAllGlasses(req: NextApiRequest, res: NextApiResponse) {
       });
     }
   }
-    if (client instanceof MongoClient) {
-      client.close();
-    }
+  if (client instanceof MongoClient) {
+    client.close();
+  }
 }
 
 async function addGlasses(req: NextApiRequest, res: NextApiResponse) {
@@ -44,12 +44,11 @@ async function addGlasses(req: NextApiRequest, res: NextApiResponse) {
     const db = client.db(process.env.DB_NAME);
 
     const glassesCollection = db.collection('glasses');
-    glassesCollection.insertOne(req.body);
+    await glassesCollection.insertOne(req.body);
     res.status(200).json({
       message: 'Glasses added successfully',
       success: true
     });
-
   } catch (error) {
     if (error instanceof Error) {
       res.status(400).json({
@@ -57,6 +56,9 @@ async function addGlasses(req: NextApiRequest, res: NextApiResponse) {
         success: false
       });
     }
+  }
+  if (client instanceof MongoClient) {
+    client.close();
   }
 }
 
