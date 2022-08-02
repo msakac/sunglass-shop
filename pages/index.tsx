@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import Head from 'next/head';
 import { HomepageHead } from '../helpers/head-data';
 import GlassesForm from '../components/Glasses/GlassesForm/GlassesForm';
+import Modal from '../components/Modal/Modal';
 
 const HomePage: NextPage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage: NextPage = () => {
       </Head>
       <Layout>
         <h1>Home Page</h1>
+        <Modal />
       </Layout>
     </Fragment>
   );
