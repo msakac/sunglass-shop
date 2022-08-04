@@ -9,6 +9,7 @@ import Card from '../../components/UI/Card';
 import Title from '../../components/UI/Title';
 import { HomepageHead } from '../../helpers/head-data';
 import { useRouter } from 'next/router';
+import Modal from '../../components/Modal/Modal';
 
 interface IAdminPageProps {
   glasses: GlassesType[];
@@ -18,6 +19,7 @@ export default function index({ glasses }: IAdminPageProps) {
   const router = useRouter();
   //State that manages form for adding new glasses
   const [isCreateForm, setIsCreateForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   //Columns for table
   const tableColumns = ['Image', 'ID', 'Created', 'Title', 'Type', 'Price', 'Quantity', 'Description'];
@@ -26,6 +28,9 @@ export default function index({ glasses }: IAdminPageProps) {
   const editClickHandler = (id: string) => {
     console.log('Edit:' + id);
   };
+
+  const deleteOpenModal = () => {
+  }
 
   const deleteClickHandler = async (id: string) => {
     console.log('Delete:' + id);
@@ -40,7 +45,7 @@ export default function index({ glasses }: IAdminPageProps) {
   //Buttons that will be in table. Every button has title, onClick event and style
   const tableButtons = [
     { title: 'Edit', onClick: editClickHandler, style: styles.btnUpdate },
-    { title: 'Delete', onClick: deleteClickHandler, style: styles.btnDelete }
+    { title: 'Delete', onClick: () => setShowModal(true), style: styles.btnDelete }
   ];
 
   //Handler for form state
@@ -54,6 +59,14 @@ export default function index({ glasses }: IAdminPageProps) {
         <title>{HomepageHead.title}</title>
         <meta {...HomepageHead.meta} />
       </Head>
+      {showModal && (
+        <Modal
+          modalText="Are you sure you want to delete this product?"
+          onConfirm={deleteClickHandler}
+          onReject={() => setShowModal(false)}
+        />
+      )}
+
       <Layout>
         <Title title="Admin Page" style="my-[3vw] text-4xl" />
         <Card style="max-w-2xl">
