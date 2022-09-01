@@ -15,7 +15,6 @@ const HomePage: NextPage = () => {
       </Head>
       <Layout>
         <h1>Home Page</h1>
-        <Modal />
       </Layout>
     </Fragment>
   );

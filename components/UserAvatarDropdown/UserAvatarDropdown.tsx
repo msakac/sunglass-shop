@@ -11,7 +11,13 @@ interface IUserAvatarDropdownProps {
     link: string;
   }[];
 }
-
+/**
+ *
+ * @param param0 Components as props takes: onClick => callback function, 
+ * isOpen => default dropdown value opened or closed, 
+ * profileDropdownItems => items in dropdown menu (key, title, link)
+ * @returns UserAvatarDropdown component
+ */
 export default function UserAvatarDropdown({ onClick, isOpen, profileDropdownItems }: IUserAvatarDropdownProps) {
   return (
     <Fragment>

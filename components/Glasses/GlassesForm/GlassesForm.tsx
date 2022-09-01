@@ -6,15 +6,23 @@ import { useRouter } from 'next/router';
 
 interface IGlassesFormProps {
   onCancel: () => void;
+  glasses?: {
+    title?: string;
+    type?: string;
+    quantity?: string;
+    price?: string;
+    description?: string;
+    image?: string;
+  };
 }
 
-export default function GlassesForm({ onCancel }: IGlassesFormProps) {
-  const [title, setTitle] = useState('');
-  const [type, setType] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
+export default function GlassesForm({ onCancel, glasses }: IGlassesFormProps) {
+  const [title, setTitle] = useState(glasses?.title ? glasses.title : '');
+  const [type, setType] = useState(glasses?.type ? glasses.type : '');
+  const [quantity, setQuantity] = useState(glasses?.quantity ? glasses.quantity : '');
+  const [price, setPrice] = useState(glasses?.price ? glasses.price : '');
+  const [description, setDescription] = useState(glasses?.description ? glasses.description : '');
+  const [image, setImage] = useState(glasses?.image ? glasses.image : '');
 
   const router = useRouter();
 
@@ -47,7 +55,7 @@ export default function GlassesForm({ onCancel }: IGlassesFormProps) {
         <Input
           id={'glasses_name'}
           title={'Glasses name'}
-          required
+          requiredf
           placeholder="Some Glasses"
           onChange={(e: React.FormEvent<HTMLInputElement>) => setTitle(e.currentTarget.value)}
           value={title}
