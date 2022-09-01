@@ -62,7 +62,7 @@ export default function Navigation() {
     {
       key: '5n',
       title: 'Login',
-      link: '/'
+      link: '/login'
     }
   ];
 
