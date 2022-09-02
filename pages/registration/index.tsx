@@ -1,16 +1,10 @@
 import Head from 'next/head';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { GlassesType } from '../../common/types';
-import GlassesForm from '../../components/Glasses/GlassesForm/GlassesForm';
 import Layout from '../../components/Layout/Layout';
-import Table from '../../components/Table/Table';
-import Button from '../../components/UI/Button';
-import Card from '../../components/UI/Card';
-import Title from '../../components/UI/Title';
 import { HomepageHead } from '../../helpers/head-data';
 import { useRouter } from 'next/router';
-import Modal from '../../components/Modal/Modal';
-import LoginForm from '../../components/LoginForm/LoginForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 
 interface IAdminPageProps {
   glasses: GlassesType[];
@@ -25,8 +19,8 @@ export default function index({ glasses }: IAdminPageProps) {
         <title>{HomepageHead.title}</title>
         <meta {...HomepageHead.meta} />
       </Head>
-      <Layout style={'h-[80vh]'}>
-        <LoginForm />
+      <Layout>
+        <RegistrationForm/>
       </Layout>
     </Fragment>
   );

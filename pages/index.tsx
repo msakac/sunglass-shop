@@ -3,14 +3,11 @@ import Layout from '../components/Layout/Layout';
 import React, { Fragment } from 'react';
 import Head from 'next/head';
 import { HomepageHead } from '../helpers/head-data';
-import GlassesForm from '../components/Glasses/GlassesForm/GlassesForm';
-import Modal from '../components/Modal/Modal';
 
 const HomePage: NextPage = () => {
   return (
     <Fragment>
       <Head>
-        {' '}
         <title>{HomepageHead.title}</title> <meta {...HomepageHead.meta} />
       </Head>
       <Layout>

@@ -1,77 +1,55 @@
+import Link from 'next/link';
 import React from 'react';
+import Button from '../UI/Button';
+import VectorEnvelope from '../Vector/VectorEnvelope';
+import VectorLogin from '../Vector/VectorLogin';
+import VectorText from '../Vector/VectorText';
 
 export default function LoginForm() {
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account
-            </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
-              <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Your email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">
-                      Remember me
-                    </label>
-                  </div>
-                </div>
-                <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
-                  Forgot password?
-                </a>
-              </div>
-              <button
-                type="submit"
-                className="w-full text-white bg-purple-700 hover:bg-purple-900 rounded-lg text-sm px-5 py-2.5 text-center">
-                Sign in
-              </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet?{' '}
-                <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-                  Sign up
-                </a>
-              </p>
-            </form>
+    <section className="w-[80%] h-[100%] m-auto flex flex-col justify-center items-center gap-3 bg-gray-50 dark:bg-gray-900">
+      <VectorLogin className="w-[100%] h-[100%] my-[-200px]" />
+      <h1 className="self-start text-4xl text-white font-bold border-b-2 w-full text-start py-2 border-[#4ecebe]">Login</h1>
+      <form className="flex flex-col gap-4 self-start w-full">
+        <div className="flex gap-3 items-center">
+          <VectorEnvelope className="w-[30px] h-[30px] fill-white self-end" />
+          <div className="ml-3">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="E-mail"
+              className="bg-transparent border-solid border-b-[1px] border-gray-500 text-white py-2 focus:outline-none focus:border-b-2 focus:border-[#4ecebe] focus:animate-pulse transition-colors"
+            />
           </div>
         </div>
+        <div className="flex gap-3 items-center">
+          <VectorText className="w-[30px] h-[30px] fill-white self-end" />
+          <div className="ml-3">
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="Password"
+              className="bg-transparent border-solid border-b-[1px] border-gray-500 text-white py-2 focus:outline-none focus:border-b-2 focus:border-[#4ecebe] focus:animate-pulse transition-colors"
+            />
+          </div>
+        </div>
+      </form>
+      <div className="mt-4 flex justify-between w-full">
+        <div className="text-white">
+          <input type="checkbox" id="remember" />
+          <label htmlFor="remember" className='mx-2 text-gray-400 font-semibold'>Remember me</label>
+        </div>
+        <Link href="/">
+          <a className="text-gray-400 text-sm self-end font-semibold hover:border-b-[1px] hover:border-gray-400">Forgot Password?</a>
+        </Link>
       </div>
+      <Button
+        title={'Login'}
+        withBorder={false}
+        style={'w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:outline hover:outline-offset-2 hover:outline-1'}
+      />
     </section>
   );
 }

@@ -102,18 +102,15 @@ export default function Navigation() {
 
 const style = {
   nav: 'bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800',
-  wrapper:
-    'container flex flex-wrap justify-between items-center mx-auto',
+  wrapper: 'container flex flex-wrap justify-between items-center mx-auto',
   logo: 'self-center text-2xl ml-3 font-semibold whitespace-nowrap dark:text-white',
   button: `inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg 
   md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 
   dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`,
   list__container: (navIsOpen: boolean) =>
-    `${
-      navIsOpen ? '' : 'hidden'
-    } justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2`,
-  ul: ` flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 
-  md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium 
+    `${navIsOpen ? '' : 'hidden'} justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2`,
+  ul: `absolute right-[5%] flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 
+  md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium md:static
   md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700`,
   listItem_unactive: ` font-semibold block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400
   md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`,
