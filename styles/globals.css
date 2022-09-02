@@ -17,4 +17,21 @@
         background-clip: text;
         -webkit-background-clip: text;
     }
+
+    .or-login {
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-column-gap: 10px;
+        align-items: center;
+        color: #9ca3af;
+        width: 100%;
+        font-size:12px;
+    }
+    .or-login::after,
+    .or-login::before{
+        content: "";
+        height: 1px;
+        display: block;
+        background-color: currentColor;
+    }
 }
