@@ -1,10 +1,19 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import ListItem from '../ListItem/ListItem';
 import UserAvatarDropdown from '../UserAvatarDropdown/UserAvatarDropdown';
-export default function Navigation() {
+
+const Navigation = forwardRef((props, ref) => {
+
   const [navIsOpen, setNavIsOpen] = useState(false);
   const [profileIsOpen, setProfileIsOpen] = useState(false);
+
+    useImperativeHandle(ref, () => ({
+    clickedOutside() {
+      navIsOpen && navClickHandler();
+      profileIsOpen && profileClickHandler();
+    }
+  }))
 
   const navClickHandler = () => {
     profileIsOpen && setProfileIsOpen(false);
@@ -98,7 +107,7 @@ export default function Navigation() {
       </div>
     </nav>
   );
-}
+});
 
 const style = {
   nav: 'bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800',
@@ -116,3 +125,5 @@ const style = {
   md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700`,
   listItem_active: `font-semibold block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white`
 };
+
+export default Navigation;
