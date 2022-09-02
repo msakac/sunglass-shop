@@ -8,6 +8,7 @@ interface IButtonProps {
 }
 
 export default function Button({ title, onClick, style = '', withBorder = true }: IButtonProps) {
+  console.log(style);
   return (
     <button onClick={onClick} className={classes.button(style)}>
       <span className={classes.span(withBorder)}>{title}</span>

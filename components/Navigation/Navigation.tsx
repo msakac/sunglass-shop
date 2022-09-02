@@ -109,7 +109,7 @@ const style = {
   dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`,
   list__container: (navIsOpen: boolean) =>
     `${navIsOpen ? '' : 'hidden'} justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-2`,
-  ul: `absolute right-[5%] flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 
+  ul: `absolute z-50 right-[5%] flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 
   md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium md:static
   md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-700`,
   listItem_unactive: ` font-semibold block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400
