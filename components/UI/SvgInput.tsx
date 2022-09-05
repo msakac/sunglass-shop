@@ -1,0 +1,30 @@
+import React, { PropsWithChildren } from "react";
+
+
+interface ISvgInputProps {
+  id: string;
+  type: string;
+  classes?: string;
+  containerClasses?: string;
+  children: React.ReactNode;
+  inputProps: {
+    [x: string]: any;
+  };
+}
+/** 
+ * Creates Input element with SVG image
+ * @params id: input id
+ * @params type: input type(text,email,password..)
+ * @params classes: tailwind classes for input style
+ * @params containerClasses: tailwind classes for input wrapper style
+ * @params children: SVG image component. Can be found in Vector component folder
+ * @params inputProps: Object that holds all props for input element
+ */
+export default function SvgInput({id, type, classes, containerClasses, children, inputProps} : ISvgInputProps) {
+  return (
+    <div className={`flex gap-3 group ${containerClasses}`}>
+      {children}
+      <input id={id} type={type} {...inputProps} className={classes} />
+    </div>
+  );
+}

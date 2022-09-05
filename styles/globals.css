@@ -27,6 +27,7 @@
         width: 100%;
         font-size:12px;
     }
+    
     .or-login::after,
     .or-login::before{
         content: "";
