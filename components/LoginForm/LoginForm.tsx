@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
 import Button from '../UI/Button';
-import VectorEnvelope from '../Vector/VectorEnvelope';
+import VectorEmail from '../Vector/VectorEmail';
 import VectorLogin from '../Vector/VectorLogin';
-import VectorText from '../Vector/VectorText';
+import VectorStar from '../Vector/VectorStar';
 import { GradientColors } from '../../common/types';
 import SvgInput from '../UI/SvgInput';
 
 export default function LoginForm() {
-  const vectorEnvelope = <VectorEnvelope className={style.inputVector} />;
-  const vectorText = <VectorText className={style.inputVector} />;
+  const vectorEmail = <VectorEmail className={style.inputVector} />;
+  const vectorStar = <VectorStar className={style.inputVector} />;
 
   return (
     <section className={style.wrapper}>
@@ -17,7 +17,7 @@ export default function LoginForm() {
       <h1 className={style.title}>Login</h1>
       <form className="flex flex-col gap-4 self-stretch" autoComplete="off">
         <SvgInput
-          children={vectorEnvelope}
+          children={vectorEmail}
           id="email"
           type="email"
           classes={style.inputStyle}
@@ -28,7 +28,7 @@ export default function LoginForm() {
           }}
         />
         <SvgInput
-          children={vectorText}
+          children={vectorStar}
           id="email"
           type="password"
           classes={style.inputStyle}
@@ -58,7 +58,7 @@ export default function LoginForm() {
       <p className="or-login">OR</p>
       <div className="flex">
         <p className="text-sm text-gray-500 font-semibold">New to Gleseso?</p>
-        <Link href="/">
+        <Link href="/registration">
           <a className={style.linkRegister}>Register</a>
         </Link>
       </div>

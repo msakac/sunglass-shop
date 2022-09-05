@@ -10,7 +10,7 @@ const HomePage: NextPage = () => {
       <Head>
         <title>{HomepageHead.title}</title> <meta {...HomepageHead.meta} />
       </Head>
-      <Layout>
+      <Layout style='max-w-[1536px]'>
         <h1>Home Page</h1>
       </Layout>
     </Fragment>

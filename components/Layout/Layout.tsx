@@ -26,7 +26,7 @@ export default function Layout({children, style} : ILayoutProps) {
       <header>
         <Navigation ref={navRef} />
       </header>
-      <main className={`mx-auto max-w-[1536px] text-center ${style}`} onClick={onClickedOutside}>
+      <main className={`mx-auto text-center ${style}`} onClick={onClickedOutside}>
         {children}
       </main>
     </Fragment>

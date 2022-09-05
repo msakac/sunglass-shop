@@ -19,8 +19,8 @@ export default function index({ glasses }: IAdminPageProps) {
         <title>{HomepageHead.title}</title>
         <meta {...HomepageHead.meta} />
       </Head>
-      <Layout>
-        <RegistrationForm/>
+      <Layout style='w-auto max-w-[1000px]'>
+        <RegistrationForm />
       </Layout>
     </Fragment>
   );

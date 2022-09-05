@@ -80,7 +80,7 @@ export default function index({ glasses }: IAdminPageProps) {
         <Modal modalText="Are you sure you want to delete this product?" onConfirm={deleteGlasses} onReject={() => setShowModal(false)} />
       )}
 
-      <Layout>
+      <Layout style='max-w-[1536px]'>
         <Title title="Admin Page" style="my-[3vw] text-4xl" />
         {!isEditForm && (
           <Card style="max-w-2xl">
