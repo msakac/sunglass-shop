@@ -4,6 +4,8 @@ import React from "react";
 interface ISvgInputProps {
   id: string;
   type: string;
+  value: string;
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void;
   classes?: string;
   containerClasses?: string;
   children: React.ReactNode;
@@ -20,11 +22,11 @@ interface ISvgInputProps {
  * @params children: SVG image component. Can be found in Vector component folder
  * @params inputProps: Object that holds all props for input element
  */
-export default function SvgInput({id, type, classes, containerClasses, children, inputProps} : ISvgInputProps) {
+export default function SvgInput({id, type, classes, containerClasses, children, inputProps, value, onChange} : ISvgInputProps) {
   return (
     <div className={`flex gap-3 group ${containerClasses}`}>
       {children}
-      <input id={id} type={type} {...inputProps} className={classes} />
+      <input id={id} type={type} value={value} onChange={onChange} {...inputProps} className={classes} />
     </div>
   );
 }
