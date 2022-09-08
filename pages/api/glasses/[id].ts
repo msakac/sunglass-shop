@@ -6,8 +6,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     case 'DELETE': {
       return deleteGlasses(req, res);
     }
-    case 'PUT': {
-    }
   }
 }
 

@@ -1,0 +1,6 @@
+.next
+dist
+node_modules/
+config
+azure-pipelines
+ssgConfig

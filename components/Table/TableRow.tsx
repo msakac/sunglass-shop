@@ -1,10 +1,13 @@
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import { TableButton } from '../../common/types';
 
 interface ITableRowProps {
   [x: string]: any;
-  buttons?: TableButton[]
+  buttons?: TableButton[];
+  data: {
+    [x: string]: any;
+  };
 }
 
 export default function TableRow({ data, buttons }: ITableRowProps) {

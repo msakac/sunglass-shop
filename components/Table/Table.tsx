@@ -8,7 +8,7 @@ interface ITableProps {
   data?: GlassesType[];
 }
 
-export default function Table({ style, columns, buttons, data }: ITableProps) {
+export default function Table({ columns, buttons, data }: ITableProps) {
   return (
     <div className={styles.wrapper}>
       <table className={styles.table}>

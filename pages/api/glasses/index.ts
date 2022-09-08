@@ -9,10 +9,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     case 'POST': {
       return addGlasses(req, res);
     }
-    case 'DELETE': {
-    }
-    case 'PUT': {
-    }
   }
 }
 
@@ -28,7 +24,7 @@ async function getAllGlasses(req: NextApiRequest, res: NextApiResponse) {
     if (error instanceof Error) {
       res.status(400).json({
         message: error.message,
-        success: false
+        success: false,
       });
     }
   }
@@ -47,13 +43,13 @@ async function addGlasses(req: NextApiRequest, res: NextApiResponse) {
     await glassesCollection.insertOne(req.body);
     res.status(200).json({
       message: 'Glasses added successfully',
-      success: true
+      success: true,
     });
   } catch (error) {
     if (error instanceof Error) {
       res.status(400).json({
         message: error.message,
-        success: false
+        success: false,
       });
     }
   }

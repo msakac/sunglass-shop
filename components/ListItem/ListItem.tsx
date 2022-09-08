@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import React from 'react';
-import { UrlObject } from 'url';
-
 interface IListItemProps {
   title: string;
   link: string;

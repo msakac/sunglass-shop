@@ -29,7 +29,7 @@ export default function GlassesForm({ onCancel, glasses }: IGlassesFormProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    let glasses = {
+    const glasses = {
       title,
       type,
       quantity,

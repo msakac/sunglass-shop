@@ -4,7 +4,8 @@ import {ReactNode} from 'react';
 
 interface ILayoutProps{
   children?: ReactNode,
-  style?: string
+  style?: string,
+  
 }
 
 interface NavigationRef {

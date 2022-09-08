@@ -14,13 +14,12 @@ export default function LoginForm() {
   const vectorStar = <VectorStar className={style.inputVector} />;
 
   return (
-    <section className="flex flex-col md:flex-row items-center border dark:border-gray-600 rounded-2xl bg-gray-50 dark:bg-gray-800 mt-[12px] md:mt-[100px] mx-5 p-2 md:p-5">
+    <section className={style.section}>
       <VectorRegister className={style.vectorRegistration} />
-      <div className={style.wrapper}>
+      <div className={style.contentWrapper}>
         <h1 className={style.title}>Sign Up</h1>
         <form className="flex flex-col gap-4 self-stretch" autoComplete="off">
           <SvgInput
-            children={vectorEmail}
             id="email"
             type="email"
             classes={style.inputStyle}
@@ -29,9 +28,8 @@ export default function LoginForm() {
               autoComplete: 'new-password',
               placeholder: 'E-mail'
             }}
-          />
+          >{vectorEmail}</SvgInput>
           <SvgInput
-            children={vectorUser}
             id="full-name"
             type="text"
             classes={style.inputStyle}
@@ -39,9 +37,8 @@ export default function LoginForm() {
               name: 'full-name',
               placeholder: 'Full name'
             }}
-          />
+          >{vectorUser}</SvgInput>
           <SvgInput
-            children={vectorStar}
             id="email"
             type="password"
             classes={style.inputStyle}
@@ -50,11 +47,11 @@ export default function LoginForm() {
               placeholder: 'Password',
               autoComplete: 'new-password'
             }}
-          />
+          >{vectorStar}</SvgInput>
         </form>
         <div className="mt-4">
           <div className="text-gray-400 text-xs font-semibold ">
-            <p className='text-left'>By signing up, you agree to our Terms & Conditions and Privacy Policy</p>
+            <p className="text-left">By signing up, you agree to our Terms & Conditions and Privacy Policy</p>
           </div>
         </div>
         <Button
@@ -65,7 +62,7 @@ export default function LoginForm() {
         <p className="or-login">OR</p>
         <div className="flex">
           <p className="text-sm text-gray-500 font-semibold">Already joined us?</p>
-          <Link href="/">
+          <Link href="/login">
             <a className={style.linkLogin}>Login</a>
           </Link>
         </div>
@@ -75,10 +72,11 @@ export default function LoginForm() {
 }
 
 const style = {
-  wrapper:
-    'w-[90%] h-[100%] m-auto my-6 flex flex-col md:p-5 justify-center items-center gap-3 md:w-[60%] lg:w-[40%]',
+  section:
+    'flex flex-col sm:flex-row items-center border dark:border-gray-600 rounded-2xl bg-gray-50 dark:bg-gray-800 mt-[12px] sm:mt-[100px] mx-5 p-2 sm:p-5',
+  contentWrapper: 'w-[90%] h-[100%] m-auto my-6 flex flex-col sm:p-5 justify-center items-center gap-3 sm:w-[60%] lg:w-[40%]',
   vectorRegistration: 'w-[70%] h-[70%] basis-1/2',
-  title: 'self-start text-3xl text-white font-bold border-b-2 w-full text-start pb-2 mb-2 md:mb-6 border-cyan-500',
+  title: 'self-start text-3xl text-white font-bold border-b-2 w-full text-start pb-2 mb-2 sm:mb-6 border-cyan-500',
   inputVector:
     'w-[40px] h-[40px] fill-white self-end group-focus-within:fill-cyan-400 group-focus-within:animate-pulse group-focus-within:transition-colors',
   inputStyle:

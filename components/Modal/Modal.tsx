@@ -5,8 +5,8 @@ interface IModalProps {
   modalText: string;
   btnConfirmText?: string;
   btnRejectText?: string;
-  onConfirm: any;
-  onReject: any;
+  onConfirm: () => void;
+  onReject: () => void;
 }
 
 export default function Modal({ modalText, btnConfirmText = 'Confirm', btnRejectText = 'Reject', onConfirm, onReject }: IModalProps) {
@@ -39,7 +39,7 @@ export default function Modal({ modalText, btnConfirmText = 'Confirm', btnReject
                 strokeWidth="2"
                 d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <h3 className={style.modal_text}>Are you sure you want to delete this product?</h3>
+            <h3 className={style.modal_text}>{modalText}</h3>
             <Button
               title={btnConfirmText}
               onClick={onConfirm}
