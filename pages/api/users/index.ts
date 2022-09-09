@@ -1,6 +1,7 @@
 import { MongoClient } from 'mongodb';
 import { NextApiResponse, NextApiRequest } from 'next';
-import { type } from 'os';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const bcrypt = require("bcrypt");
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
 		switch(req.method) {
@@ -49,7 +50,6 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
 
 		//Check if email is already in database
 		const checkEmail = await usersCollection.findOne({email:req.body.email});
-		console.log(`Email exist: ${checkEmail}`);
 
 		//If email exist we send back error else insert
 		if(checkEmail !== null) {
@@ -58,6 +58,8 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
 				success: false
 			})
 		}else	{
+			const password = await bcrypt.hash(req.body.password, 10);
+			req.body.password = password;
 			const promise = await usersCollection.insertOne(req.body);
 			res.status(200).json({
 				message: 'User added successfully',
@@ -77,5 +79,6 @@ async function addUser(req: NextApiRequest, res: NextApiResponse) {
 			client.close();
 	}
 }
+
 
 export default handler;

@@ -38,7 +38,7 @@ export default function index({ glasses }: IAdminPageProps) {
   /** Promise method that deletes one glasses from database */
   const deleteGlasses = async () => {
     const response = await fetch('api/glasses/' + selectedForDelete, {
-      method: 'DELETE'
+      method: 'DELETE',
     });
     const data = await response.json();
     console.log(data.message);

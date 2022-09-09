@@ -13,7 +13,7 @@ export default function index() {
         <title>{HomepageHead.title}</title>
         <meta {...HomepageHead.meta} />
       </Head>
-      <Layout style='w-auto max-w-[1000px]'>
+      <Layout style='w-auto max-w-[1000px] flex items-center h-[calc(100vh-68px)]'>
         <RegistrationForm />
       </Layout>
     </Fragment>

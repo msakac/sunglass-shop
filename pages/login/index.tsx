@@ -18,7 +18,7 @@ export default function index() {
         <title>{HomepageHead.title}</title>
         <meta {...HomepageHead.meta} />
       </Head>
-      <Layout style={'h-[80vh] max-w-[1000px]'}>
+      <Layout style={'h-[80vh] max-w-[1000px] flex items-center h-[calc(100vh-68px)]'}>
         <LoginForm />
       </Layout>
     </Fragment>

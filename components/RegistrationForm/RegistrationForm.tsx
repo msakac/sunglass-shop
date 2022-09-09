@@ -19,13 +19,22 @@ export default function LoginForm() {
 
   const router = useRouter();
 
-  const vectorEmail = <VectorEmail className={style.inputVector} />;
-  const vectorUser = <VectorUser className={style.inputVector} />;
-  const vectorStar = <VectorStar className={style.inputVector} />;
-
+  /**
+   * After submiting the form, function calls /api/users with POST request to register user.
+   * If request was not successful, reset all input fields, set error message and hide Spinner.
+   * Else reroute.
+   */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    <VectorUser className={style.inputVector} />;
     setIsRegistering(true);
     e.preventDefault();
+
+    if (password.length < 6) {
+      setPassword('');
+      setError('Password has to be atleast 6 characters');
+      setIsRegistering(false);
+      return;
+    }
 
     const user = {
       email,
@@ -41,13 +50,13 @@ export default function LoginForm() {
     });
     const data = await response.json();
 
-    if(!data.success) {
+    if (!data.success) {
       setError(data.message);
       setEmail('');
       setFullName('');
       setPassword('');
       setIsRegistering(false);
-    } else{
+    } else {
       router.replace('/');
     }
   };
@@ -57,20 +66,21 @@ export default function LoginForm() {
       <VectorRegister className={style.vectorRegistration} />
       <div className={style.contentWrapper}>
         <h1 className={style.title}>Sign Up</h1>
-       {error.length > 0 && <div className='flex items-center'>
-          <MagnifyingGlass
-            visible={true}
-            height="30"
-            width="30"
-            ariaLabel="MagnifyingGlass-loading"
-            wrapperStyle={{}}
-            wrapperClass="MagnifyingGlass-wrapper"
-            glassColor="#c0efff"
-            color="#e15b64"
-          />
-          <p className="text-[#ff6584] text-[14px] font-semibold">{error}</p>
-        </div>
-      }
+        {error.length > 0 && (
+          <div className="flex items-center">
+            <MagnifyingGlass
+              visible={true}
+              height="30"
+              width="30"
+              ariaLabel="MagnifyingGlass-loading"
+              wrapperStyle={{}}
+              wrapperClass="MagnifyingGlass-wrapper"
+              glassColor="#c0efff"
+              color="#e15b64"
+            />
+            <p className="text-[#ff6584] text-[14px] font-semibold">{error}</p>
+          </div>
+        )}
 
         <form className="flex flex-col gap-4 self-stretch" autoComplete="off" onSubmit={handleSubmit}>
           <SvgInput
@@ -85,7 +95,7 @@ export default function LoginForm() {
               placeholder: 'E-mail',
               required: true,
             }}>
-            {vectorEmail}
+            <VectorEmail className={style.inputVector} />
           </SvgInput>
           <SvgInput
             id="full-name"
@@ -95,10 +105,10 @@ export default function LoginForm() {
             classes={style.inputStyle}
             inputProps={{
               name: 'full-name',
-              placeholder: 'Full name',
+              placeholder: 'Full Name',
               required: true,
             }}>
-            {vectorUser}
+            <VectorUser className={style.inputVector} />
           </SvgInput>
           <SvgInput
             id="email"
@@ -112,7 +122,7 @@ export default function LoginForm() {
               autoComplete: 'new-password',
               required: true,
             }}>
-            {vectorStar}
+            <VectorStar className={style.inputVector} />
           </SvgInput>
           <div className="mt-4">
             <div className="text-gray-400 text-xs font-semibold ">
@@ -123,7 +133,7 @@ export default function LoginForm() {
             <Button
               title={'Continue'}
               withBorder={false}
-              style={`w-[90%] rounded-full ${GradientColors.CYAN_TO_BLUE} hover:translate-y-[-2px] hover:shadow-2xl`}
+              style={`w-[90%] rounded-full ${GradientColors.CYAN_TO_BLUE} hover:translate-y-[-2px] hover:shadow-2xl self-center`}
             />
           )}
           {isRegistering && (
@@ -154,7 +164,7 @@ export default function LoginForm() {
 
 const style = {
   section:
-    'flex flex-col sm:flex-row items-center border dark:border-gray-600 rounded-2xl bg-gray-50 dark:bg-gray-800 mt-[12px] sm:mt-[100px] mx-5 p-2 sm:p-5',
+    'flex flex-col sm:flex-row items-center border dark:border-gray-600 rounded-2xl bg-gray-50 dark:bg-gray-800 m-5 p-2 sm:p-5 max-h-[calc(100vh-88px)]',
   contentWrapper: 'w-[90%] h-[100%] m-auto my-6 flex flex-col sm:p-5 justify-center items-center gap-3 sm:w-[60%] lg:w-[40%]',
   vectorRegistration: 'w-[70%] h-[70%] basis-1/2',
   title: 'self-start text-3xl text-white font-bold border-b-2 w-full text-start pb-2 mb-2 sm:mb-6 border-cyan-500',
